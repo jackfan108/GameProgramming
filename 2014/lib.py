@@ -1,15 +1,26 @@
 from sys import *
 from random import *
+from math import log
 
 def printboard(board):
 	for i in board:
-		print("--------------------------")
+		print("---------------------")
 		stdout.write("|")
 		for k in i:
-			if k >= 0:
-				stdout.write("  " + str(k) + "  " + "|")
+			if k == 0:
+				stdout.write("    |")
+				continue
+			if int(log(k)/log(10)) == 3:
+				stdout.write(str(k))
+			elif int(log(k)/log(10)) == 2:
+				stdout.write(" " + str(k))
+			elif int(log(k)/log(10)) == 1:
+				stdout.write(" " + str(k) + " ")
+			else:
+				stdout.write("  " + str(k) + " ")
+			stdout.write("|")
 		stdout.write("\n")
-	print("--------------------------")
+	print("---------------------")
 
 def addrandomnumber(board,n = 1):
 	for i in range(n):
@@ -26,9 +37,19 @@ def addrandomnumber(board,n = 1):
 				board[x][y] = 2 * randint(1,2)
 				flag = 1
 				#print("flag = " + str(flag))
+	return board
 
 
-def moveleft():
+def moveleft(board):
+	for i in range(4):
+		for k in range(3):
+			if board[i][k+1] == 0:
+				
+			if board[i][k+1] == board[i][k]:
+				board[i][k] *= 2
+				board[i][k+1] = 0
+
+
 	stdout.write("left")
 def moveright():
 	print("abc")

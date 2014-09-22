@@ -2,17 +2,21 @@ from math import *
 from lib import *
 
 board = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-addrandomnumber(board,n=2)
+board = addrandomnumber(board,2)
+board[1][2] = 16
+board[2][3] = 128
+board[0][1] = 1024
 printboard(board)
+
 #board has been initiated with two tiles
 if (True):
-	move = raw_input("Please choose where to go(\"w;a;s;d\"): ")
+	move = raw_input("Please choose where to go(\"w,a,s,d\"): ")
 	if move == "d":
 		print("dddddd")
-		moveright()
+		moveright(board)
 	elif move == "s":
-		movedown()
+		movedown(board)
 	elif move == "a":
-		moveleft()
+		moveleft(board)
 	elif move == "w":
-		moveup()
+		moveup(board)
